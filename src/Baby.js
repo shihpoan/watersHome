@@ -24,7 +24,7 @@ const Baby=(props)=>{
        /* 下面是 componentDidMount */
 
        ajaxSimulator();
-       document.getElementById("talk").append('爸！')
+       document.getElementById("talk").append('爸！我是水水')
        /* 上面是 componentDidMount */
 
        return(()=>{

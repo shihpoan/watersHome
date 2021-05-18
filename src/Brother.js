@@ -11,7 +11,7 @@ class Brother extends Component{
 
     setMyFeeling(){
         if(this.props.money<this.state.exceptAmount)
-            this.setState({feeling:'幹'})
+            this.setState({feeling:'幹！太少了'})
         else
             this.setState({feeling:'ok'})
         // this.props.argue("brother",this.state.exceptAmount);

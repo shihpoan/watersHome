@@ -24,7 +24,7 @@ class Brother extends Component{
     }
 
     render(){
-        return(<div>我是水水，我拿到{this.props.money}，{this.state.feeling}</div>);
+        return(<div>我是水水1，我拿到{this.props.money}，{this.state.feeling}</div>);
     }
 }
 export default Brother;

@@ -1,3 +1,4 @@
+import { Hidden } from '@material-ui/core';
 import React, { Component } from 'react';
 class Sister extends Component{
   constructor(props) {
@@ -13,6 +14,7 @@ class Sister extends Component{
 
     argueFor70NTD(){
         this.props.argue("sister",70);
+        
     }
 
     render(){

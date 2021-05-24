@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Grandson from './Grandson';
 class Brother extends Component{
     constructor(props){
         super(props);
@@ -24,7 +25,12 @@ class Brother extends Component{
     }
 
     render(){
-        return(<div>我是水水，我拿到{this.props.money}，{this.state.feeling}</div>);
+        return(
+            <div>
+                <div>我是水水，我拿到{this.props.money}，{this.state.feeling}</div>
+                <Grandson {...this.props}/>
+            </div>
+        );
     }
 }
 export default Brother;

@@ -6,43 +6,55 @@ class ProgressDIY extends Component{
         this.state={
             percent:0,
         }
-        this.increase=this.increase.bind(this);
-        this.decrease=this.decrease.bind(this);
+        // this.increase=this.increase.bind(this);
+        // this.decrease=this.decrease.bind(this);
     }
-    increase(){
-        const percent = this.state.percent + 1;
-        this.setState({ percent },()=>{
-            if(this.state.percent >= this.props.value){
-                return;
-            }
-            this.tm = setTimeout(this.increase, 20);
-        })
-    }
+    // increase(){
+    //     const percent = this.state.percent + 1;
+    //     this.setState({ percent },()=>{
+    //         if(this.state.percent >= this.props.value){
+    //             return;
+    //         }
+    //         this.tm = setTimeout(this.increase, 20);
+    //     })
+    // }
 
-    decrease() {
-        const percent = this.state.percent - 1;
-        this.setState({ percent },()=>{
-          if (this.state.percent <= this.props.value) {
-            return;
-          }
-          this.tmTwo = setTimeout(this.decrease, 20);
-        });  
-      }
+    // decrease() {
+    //     const percent = this.state.percent - 1;
+    //     this.setState({ percent },()=>{
+    //       if (this.state.percent <= this.props.value) {
+    //         return;
+    //       }
+    //       this.tmTwo = setTimeout(this.decrease, 20);
+    //     });  
+    //   }
 
     componentDidMount(){
         this.setState({percent:this.props.value})
     }
 
     componentDidUpdate(prevProps, prevState){
-        if(prevProps.value>this.props.value){
-            if(this.tm)
-            clearTimeout(this.tm);
-            this.decrease();
-        }
-        else if(prevProps.value<this.props.value){
-        if(this.tmTwo)
-            clearTimeout(this.tmTwo);
-        this.increase();
+        // if(prevProps.value>this.props.value){
+        //     if(this.tm)
+        //     clearTimeout(this.tm);
+        //     this.decrease();
+        // }
+        // else if(prevProps.value<this.props.value){
+        // if(this.tmTwo)
+        //     clearTimeout(this.tmTwo);
+        // this.increase();
+        // }
+        if((prevProps.value!==this.props.value) || (prevState.percent!=this.state.percent)){
+            if(this.state.percent>this.props.value){
+                if(this.tm)
+                    clearTimeout(this.tm)
+                this.tmTwo=setTimeout(()=>{this.setState({percent:this.state.percent-1})},20)
+            }
+            else if(this.state.percent<this.props.value){
+                if(this.tmTwo)
+                    clearTimeout(this.tmTwo)
+                this.tm=setTimeout(()=>{this.setState({percent:this.state.percent+1})},20)
+            }
         }
     }
     
@@ -50,8 +62,8 @@ class ProgressDIY extends Component{
     render(){
         return(
             <div>
-                <div classname='progress-back' style={{backgroundColor:'rgb(0,0,0,0.2)', width:'200px', height:'7px',borderRadius:'10px'}}>
-                    <div classname='progress-bar' style={{backgroundColor:'#fe5196', width:this.state.percent.toString()+'%', height:'100%', borderRadius:'10px'}}></div>
+                <div className='progress-back' style={{backgroundColor:'rgb(0,0,0,0.2)', width:'200px', height:'7px',borderRadius:'10px'}}>
+                    <div className='progress-bar' style={{backgroundColor:'#fe5196', width:this.state.percent.toString()+'%', height:'100%', borderRadius:'10px'}}></div>
                 </div>
                 目前比率：{this.state.percent}％
                 <button value={90} onClick={this.props.onClick}>增加比率至90</button>

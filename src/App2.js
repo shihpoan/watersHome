@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import ProgressDIY from './ProgressDIY';
+import ProgressDIY2 from './ProgressDIY2';
 
 const App2=()=>{
     const [value,setValue]=useState(10);
     return(
-        <ProgressDIY value={value} onClick={(e)=>{setValue(e.target.value)}}/>
+        <ProgressDIY2 value={value} onClick={(e)=>{setValue(e.target.value)}}/>
     );
 }
 
